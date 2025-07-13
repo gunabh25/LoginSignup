@@ -1,0 +1,27 @@
+/* LoginSignupPage.css */
+
+input:focus {
+  border-color: #667eea !important;
+  box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1) !important;
+}
+
+button:hover {
+  border-color: #667eea !important;
+  background: #f8f9ff !important;
+}
+
+.dividerText {
+  position: relative;
+  z-index: 1;
+}
+
+.dividerText::before {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 0;
+  right: 0;
+  height: 1px;
+  background: #e1e5e9;
+  z-index: 0;
+}

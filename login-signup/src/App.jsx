@@ -1,6 +1,7 @@
 /* eslint-disable no-unused-vars */
 import React, { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
+// import './LoginSignupPage.css';
 
 const LoginSignupPage = () => {
   const [isLogin, setIsLogin] = useState(true);
@@ -40,7 +41,7 @@ const LoginSignupPage = () => {
       y: 0,
       transition: {
         duration: 0.6,
-        when: 'beforeChildren',
+        when: "beforeChildren",
         staggerChildren: 0.1
       }
     }
@@ -66,43 +67,36 @@ const LoginSignupPage = () => {
   };
 
   return (
-    <div style={styles.container}>
-      <div style={styles.background}>
+    <div className="container">
+      <div className="background">
         <motion.div
-          style={styles.shape1}
+          className="shape1"
           animate={{ rotate: 360, scale: [1, 1.1, 1] }}
-          transition={{ duration: 20, repeat: Infinity, ease: 'linear' }}
+          transition={{ duration: 20, repeat: Infinity, ease: "linear" }}
         />
         <motion.div
-          style={styles.shape2}
+          className="shape2"
           animate={{ rotate: -360, scale: [1, 0.9, 1] }}
-          transition={{ duration: 25, repeat: Infinity, ease: 'linear' }}
+          transition={{ duration: 25, repeat: Infinity, ease: "linear" }}
         />
       </div>
 
       <motion.div
-        style={styles.card}
+        className="card"
         variants={containerVariants}
         initial="hidden"
         animate="visible"
         whileHover={{ y: -5 }}
-        transition={{ type: 'spring', stiffness: 300 }}
+        transition={{ type: "spring", stiffness: 300 }}
       >
-        <motion.div style={styles.header} variants={itemVariants}>
-          <h1 style={styles.title}>
-            {isLogin ? 'Welcome Back' : 'Create Account'}
-          </h1>
-          <p style={styles.subtitle}>
-            {isLogin ? 'Sign in to your account' : 'Join us today'}
-          </p>
+        <motion.div className="header" variants={itemVariants}>
+          <h1 className="title">{isLogin ? 'Welcome Back' : 'Create Account'}</h1>
+          <p className="subtitle">{isLogin ? 'Sign in to your account' : 'Join us today'}</p>
         </motion.div>
 
-        <motion.div style={styles.toggleContainer} variants={itemVariants}>
+        <motion.div className="toggleContainer" variants={itemVariants}>
           <motion.button
-            style={{
-              ...styles.toggleButton,
-              ...(isLogin ? styles.toggleButtonActive : {})
-            }}
+            className={`toggleButton ${isLogin ? 'active' : ''}`}
             onClick={() => setIsLogin(true)}
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.95 }}
@@ -110,10 +104,7 @@ const LoginSignupPage = () => {
             Login
           </motion.button>
           <motion.button
-            style={{
-              ...styles.toggleButton,
-              ...(!isLogin ? styles.toggleButtonActive : {})
-            }}
+            className={`toggleButton ${!isLogin ? 'active' : ''}`}
             onClick={() => setIsLogin(false)}
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.95 }}
@@ -125,7 +116,7 @@ const LoginSignupPage = () => {
         <AnimatePresence mode="wait">
           <motion.form
             key={isLogin ? 'login' : 'signup'}
-            style={styles.form}
+            className="form"
             variants={formVariants}
             initial="hidden"
             animate="visible"
@@ -133,84 +124,81 @@ const LoginSignupPage = () => {
             onSubmit={handleSubmit}
           >
             {!isLogin && (
-              <motion.div style={styles.inputGroup} variants={itemVariants}>
+              <motion.div className="inputGroup" variants={itemVariants}>
                 <input
                   type="text"
                   name="name"
                   placeholder="Full Name"
                   value={formData.name}
                   onChange={handleInputChange}
-                  style={styles.input}
+                  className="input"
                   required
                 />
               </motion.div>
             )}
 
-            <motion.div style={styles.inputGroup} variants={itemVariants}>
+            <motion.div className="inputGroup" variants={itemVariants}>
               <input
                 type="email"
                 name="email"
                 placeholder="Email Address"
                 value={formData.email}
                 onChange={handleInputChange}
-                style={styles.input}
+                className="input"
                 required
               />
             </motion.div>
 
-            <motion.div style={styles.inputGroup} variants={itemVariants}>
+            <motion.div className="inputGroup" variants={itemVariants}>
               <input
                 type="password"
                 name="password"
                 placeholder="Password"
                 value={formData.password}
                 onChange={handleInputChange}
-                style={styles.input}
+                className="input"
                 required
               />
             </motion.div>
 
             {!isLogin && (
-              <motion.div style={styles.inputGroup} variants={itemVariants}>
+              <motion.div className="inputGroup" variants={itemVariants}>
                 <input
                   type="password"
                   name="confirmPassword"
                   placeholder="Confirm Password"
                   value={formData.confirmPassword}
                   onChange={handleInputChange}
-                  style={styles.input}
+                  className="input"
                   required
                 />
               </motion.div>
             )}
 
             {isLogin && (
-              <motion.div style={styles.forgotPassword} variants={itemVariants}>
-                <a href="#" style={styles.link}>Forgot Password?</a>
+              <motion.div className="forgotPassword" variants={itemVariants}>
+                <a href="#" className="link">Forgot Password?</a>
               </motion.div>
             )}
 
             <motion.button
               type="submit"
-              style={styles.submitButton}
+              className="submitButton"
               variants={itemVariants}
-              whileHover={{
-                scale: 1.02,
-                boxShadow: '0 8px 25px rgba(99, 102, 241, 0.3)'
-              }}
+              whileHover={{ scale: 1.02 }}
               whileTap={{ scale: 0.98 }}
             >
               {isLogin ? 'Sign In' : 'Create Account'}
             </motion.button>
 
-            <motion.div style={styles.divider} variants={itemVariants}>
-              <span className="dividerText" style={styles.dividerText}>or</span>
+            <motion.div className="divider" variants={itemVariants}>
+              <span className="dividerText">or</span>
             </motion.div>
 
-            <motion.div style={styles.socialButtons} variants={itemVariants}>
+            <motion.div className="socialButtons" variants={itemVariants}>
               <motion.button
                 type="button"
-                style={styles.socialButton}
+                className="socialButton"
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
               >
@@ -226,10 +214,10 @@ const LoginSignupPage = () => {
           </motion.form>
         </AnimatePresence>
 
-        <motion.div style={styles.footer} variants={itemVariants}>
-          <p style={styles.footerText}>
+        <motion.div className="footer" variants={itemVariants}>
+          <p className="footerText">
             {isLogin ? "Don't have an account? " : "Already have an account? "}
-            <button style={styles.switchButton} onClick={toggleMode}>
+            <button className="switchButton" onClick={toggleMode}>
               {isLogin ? 'Sign up' : 'Sign in'}
             </button>
           </p>
@@ -238,38 +226,5 @@ const LoginSignupPage = () => {
     </div>
   );
 };
-
-const styles = {
-  // ... [unchanged styles from your previous code]
-  // paste your styles object here (already working)
-};
-
-// ✅ Inject Global CSS
-const globalStyles = `
-  input:focus {
-    border-color: #667eea !important;
-    box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1) !important;
-  }
-  button:hover {
-    border-color: #667eea !important;
-    background: #f8f9ff !important;
-  }
-  .dividerText::before {
-    content: '';
-    position: absolute;
-    top: 50%;
-    left: 0;
-    right: 0;
-    height: 1px;
-    background: #e1e5e9;
-    z-index: 0;
-  }
-`;
-
-if (typeof document !== 'undefined') {
-  const styleSheet = document.createElement('style');
-  styleSheet.textContent = globalStyles;
-  document.head.appendChild(styleSheet);
-}
 
 export default LoginSignupPage;
